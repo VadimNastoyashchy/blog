@@ -12,9 +12,11 @@
     <div th:each="el : ${post}" class="alert alert-info mt-2">
         <h1 th:text="${el.title}"></h1>
         <p th:text="${el.full_text}"></p>
-        <p th:text="${el.views}"></p>
-        <a th:ref="'/blog/' + ${el.id} + '/edit'" class="btn btn-warning">Редактировать</a>
-        <a th:ref="'/blog/' + ${el.id} + '/remove'" class="btn btn-warning">Удалить</a>
+        <p><b>Просмотры:</b> <span th:text="${el.views}"></span></p>
+        <a th:href="'/blog/' + ${el.id} + '/edit'" class="btn btn-warning">Редактировать</a><br>
+        <form th:action="'/blog/' + ${el.id} + '/remove'" method="post">
+            <button class="btn btn-warning" type="submit">Удалить</button>
+        </form>
     </div>
 </div>
 <div th:insert="blocks/footer :: footer"></div>
